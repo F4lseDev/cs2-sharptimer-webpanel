@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+// @ts-expect-error: GameDig is a valid named export from gamedig, typings are wrong
 import { GameDig } from 'gamedig';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   const serverIPs = process.env.SERVER_IPS ? JSON.parse(process.env.SERVER_IPS) : [];
@@ -19,10 +20,10 @@ export async function GET() {
             map: state.map,
             numPlayers: state.numplayers,
             maxPlayers: state.maxplayers,
-            players: state.players.map((player: any) => player.name.trim()),
+            players: state.players.map((player: { name: string }) => player.name.trim()),
             bots: state.bots.length,
             connect: state.connect,
-            ping: state.ping
+            ping: state.ping,
           };
         } catch (error) {
           console.error(`Error querying server ${server.ip}:${server.port}:`, error);

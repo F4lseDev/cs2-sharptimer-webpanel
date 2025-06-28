@@ -66,11 +66,13 @@ export default function MapRecordsPage() {
           <AnimatePresence>
             <div className="space-y-6">
               {Object.entries(
-                mapRecords.reduce((acc, record) => {
-                  if (!acc[record.MapName]) acc[record.MapName] = []
-                  acc[record.MapName].push(record)
-                  return acc
-                }, {} as Record<string, MapRecord[]>)
+                Array.isArray(mapRecords)
+                  ? mapRecords.reduce((acc, record) => {
+                      if (!acc[record.MapName]) acc[record.MapName] = []
+                      acc[record.MapName].push(record)
+                      return acc
+                    }, {} as Record<string, MapRecord[]>)
+                  : {}
               ).map(([mapName, records], index) => {
                 const mapImageUrl = `https://cs2browser.com/static/img/maps/${mapName}.webp`
                 const isExpanded = expandedMaps.includes(mapName)

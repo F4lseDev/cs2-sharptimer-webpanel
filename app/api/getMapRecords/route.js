@@ -12,6 +12,8 @@ export async function GET() {
   try {
     const connection = await mysql.createConnection(dbConfig);
     const [rows] = await connection.execute('SELECT MapName, PlayerName, FormattedTime FROM PlayerRecords ORDER BY FormattedTime ASC');
+    console.log('Database connection established:', connection.threadId);
+    console.log('Fetched map records:', rows);
     await connection.end();
 
     return NextResponse.json(rows);

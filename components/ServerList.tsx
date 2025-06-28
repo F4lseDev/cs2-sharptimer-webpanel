@@ -31,6 +31,7 @@ export default function ServerList() {
       setServers(data)
       setLoading(false)
     } catch (err) {
+      console.error('Error fetching server data:', err)
       setError('Failed to load server data. Please try again later.')
       setLoading(false)
     }
@@ -50,6 +51,7 @@ export default function ServerList() {
       const updatedServer = data.find(server => server.connect === serverConnect)
       if (updatedServer) {
         return {
+          name: updatedServer.name,
           numPlayers: updatedServer.numPlayers,
           maxPlayers: updatedServer.maxPlayers,
           ping: updatedServer.ping

@@ -11,7 +11,7 @@ const dbConfig = {
 export async function GET() {
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const [rows] = await connection.execute('SELECT PlayerName, SteamID, GlobalPoints FROM PlayerStats ORDER BY GlobalPoints DESC');
+    const [rows] = await connection.execute('SELECT PlayerName, SteamID, GlobalPoints FROM PlayerStats_surf_ ORDER BY GlobalPoints DESC');
     await connection.end();
     
     return NextResponse.json(rows);

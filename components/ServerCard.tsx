@@ -20,28 +20,23 @@ const Button: React.FC<ButtonProps> = ({ children, className = '', variant = 'de
     icon: 'bg-transparent text-muted-foreground hover:text-foreground'
   }
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+    <button
       className={`${baseStyles} ${variantStyles[variant]} h-10 py-2 px-4 ${className} transition-all duration-200`}
       {...props}
     >
       {children}
-    </motion.button>
+    </button>
   )
 }
 
 const Card: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className = '', ...props }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.3 }}
+  <div
+
     className={`rounded-xl border bg-card text-card-foreground shadow-lg overflow-hidden ${className}`}
     {...props}
   >
     {children}
-  </motion.div>
+  </div>
 )
 
 const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className = '', ...props }) => (
@@ -96,9 +91,10 @@ const PlayerCountBar: React.FC<{ currentPlayers: number; maxPlayers: number }> =
 
 const PingIndicator: React.FC<{ ping: number }> = ({ ping }) => {
   const getBarColor = (threshold: number) => {
+    console.log(threshold)
     if (ping < 50) return 'bg-green-500'
     if (ping < 80) return 'bg-yellow-500'
-    return 'bg-red-500'
+    return 'bg-red-500' 
   }
 
   return (
@@ -314,7 +310,7 @@ export default function ServerCard({ server: initialServer, onRefresh }: ServerP
           <span className="text-sm font-medium text-gray-400">
             Player Count
           </span>
-          <Button variant="ghost" size="sm" onClick={() => setIsExpanded(!isExpanded)}>
+          <Button variant="icon" onClick={() => setIsExpanded(!isExpanded)}>
             <ChevronDownIcon className={`h-4 w-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
           </Button>
         </div>

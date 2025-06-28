@@ -17,14 +17,21 @@ interface MapData {
   mapper: string
 }
 
-const Input = ({ className = '', ...props }) => (
+const Input = ({
+  className = '',
+  ...props
+}: { className?: string } & React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
     className={`flex h-12 w-full rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm text-gray-100 ring-offset-gray-900 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     {...props}
   />
 )
 
-const Select = ({ children, className = '', ...props }) => (
+const Select = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.SelectHTMLAttributes<HTMLSelectElement>) => (
   <select
     className={`flex h-12 w-full items-center justify-between rounded-md border border-gray-700 bg-gray-800 px-4 py-2 text-sm text-gray-100 ring-offset-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     {...props}
@@ -33,31 +40,51 @@ const Select = ({ children, className = '', ...props }) => (
   </select>
 )
 
-const Card = ({ children, className = '', ...props }) => (
+const Card = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.HTMLAttributes<HTMLDivElement>) => (
   <div className={`rounded-2xl border border-gray-700 bg-gray-800 text-gray-100 shadow-lg ${className}`} {...props}>
     {children}
   </div>
 )
 
-const CardHeader = ({ children, className = '', ...props }) => (
+const CardHeader = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.HTMLAttributes<HTMLDivElement>) => (
   <div className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>
     {children}
   </div>
 )
 
-const CardTitle = ({ children, className = '', ...props }) => (
+const CardTitle = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.HTMLAttributes<HTMLHeadingElement>) => (
   <h3 className={`text-2xl font-semibold leading-none tracking-tight ${className}`} {...props}>
     {children}
   </h3>
 )
 
-const CardContent = ({ children, className = '', ...props }) => (
+const CardContent = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.HTMLAttributes<HTMLDivElement>) => (
   <div className={`p-6 pt-0 ${className}`} {...props}>
     {children}
   </div>
 )
 
-const Badge = ({ children, className = '', ...props }) => (
+const Badge = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.HTMLAttributes<HTMLSpanElement>) => (
   <span
     className={`inline-flex items-center rounded-full border border-purple-500 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 bg-purple-500 text-white ${className}`}
     {...props}
@@ -66,7 +93,11 @@ const Badge = ({ children, className = '', ...props }) => (
   </span>
 )
 
-const Pagination = ({ children, className = '', ...props }) => (
+const Pagination = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.HTMLAttributes<HTMLElement>) => (
   <nav
     role="navigation"
     aria-label="pagination"
@@ -77,19 +108,32 @@ const Pagination = ({ children, className = '', ...props }) => (
   </nav>
 )
 
-const PaginationContent = ({ children, className = '', ...props }) => (
+const PaginationContent = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.HTMLAttributes<HTMLUListElement>) => (
   <ul className={`flex flex-row items-center gap-1 ${className}`} {...props}>
     {children}
   </ul>
 )
 
-const PaginationItem = ({ children, className = '', ...props }) => (
+const PaginationItem = ({
+  children,
+  className = '',
+  ...props
+}: { children: React.ReactNode; className?: string } & React.LiHTMLAttributes<HTMLLIElement>) => (
   <li className={className} {...props}>
     {children}
   </li>
 )
 
-const PaginationLink = ({ children, isActive = false, className = '', ...props }) => (
+const PaginationLink = ({
+  children,
+  isActive = false,
+  className = '',
+  ...props
+}: { children: React.ReactNode; isActive?: boolean; className?: string } & React.ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
     aria-current={isActive ? "page" : undefined}
     className={`flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${
@@ -103,21 +147,30 @@ const PaginationLink = ({ children, isActive = false, className = '', ...props }
   </button>
 )
 
-const PaginationPrevious = ({ className = '', ...props }) => (
+const PaginationPrevious = ({
+  className = '',
+  ...props
+}: { className?: string } & React.ButtonHTMLAttributes<HTMLButtonElement>) => (
   <PaginationLink className={`gap-1 pl-2.5 ${className}`} {...props}>
     <ChevronLeft className="h-4 w-4" />
     <span className="sr-only">Previous</span>
   </PaginationLink>
 )
 
-const PaginationNext = ({ className = '', ...props }) => (
+const PaginationNext = ({
+  className = '',
+  ...props
+}: { className?: string } & React.ButtonHTMLAttributes<HTMLButtonElement>) => (
   <PaginationLink className={`gap-1 pr-2.5 ${className}`} {...props}>
     <span className="sr-only">Next</span>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 )
 
-const PaginationEllipsis = ({ className = '', ...props }) => (
+const PaginationEllipsis = ({
+  className = '',
+  ...props
+}: { className?: string } & React.HTMLAttributes<HTMLSpanElement>) => (
   <span
     className={`flex h-10 w-10 items-center justify-center ${className}`}
     {...props}
@@ -134,7 +187,6 @@ export default function MapExplorer() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedTier, setSelectedTier] = useState<string>('')
   const [isLoading, setIsLoading] = useState(true)
-  const [isDarkMode, setIsDarkMode] = useState(true)
 
   const mapsPerPage = 12
   const maxPages = 5
@@ -176,14 +228,14 @@ export default function MapExplorer() {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
-  const pageNumbers = []
+  const pageNumbers: number[] = []
   for (let i = 1; i <= Math.ceil(filteredMaps.length / mapsPerPage); i++) {
     pageNumbers.push(i)
   }
 
   const renderPageNumbers = () => {
     let startPage = Math.max(1, currentPage - Math.floor(maxPages / 2))
-    let endPage = Math.min(pageNumbers.length, startPage + maxPages - 1)
+    const endPage = Math.min(pageNumbers.length, startPage + maxPages - 1)
 
     if (endPage - startPage + 1 < maxPages) {
       startPage = Math.max(1, endPage - maxPages + 1)
@@ -220,8 +272,8 @@ export default function MapExplorer() {
   }
 
   return (
-    <div className={`min-h-screen flex flex-col ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'} transition-colors duration-300`}>
-      <Header setIsDarkMode={setIsDarkMode} />
+    <div className="min-h-screen flex flex-col bg-gray-900 text-gray-100 transition-colors duration-300">
+      <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           <div className="relative flex-grow">

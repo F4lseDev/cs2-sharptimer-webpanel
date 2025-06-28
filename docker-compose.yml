@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  sharptimer-webpanel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sharptimer-webpanel
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DB_HOST: db.example.local         
+      DB_USER: youruser                 
+      DB_PASSWORD: yourpassword         
+      DB_NAME: s10_surf
+      SERVER_IPS: '[{"ip":"","port":4002}]'
+    restart: unless-stopped
